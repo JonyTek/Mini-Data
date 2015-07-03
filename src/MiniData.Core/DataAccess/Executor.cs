@@ -23,6 +23,8 @@ namespace MiniData.Core.DataAccess
                     await command.Connection.OpenAsync();
                     
                     table.Load(await command.ExecuteReaderAsync());
+
+                    command.Connection.Close();
                 }
             }
 

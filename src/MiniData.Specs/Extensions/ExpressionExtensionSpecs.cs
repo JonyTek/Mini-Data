@@ -4,7 +4,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniData.Core.Extensions;
 
-namespace MiniData.Specs.Extensions
+namespace MiniData.Core.Specs.Extensions
 {
     [TestClass]
     public class ExpressionExtensionSpecs
@@ -13,7 +13,7 @@ namespace MiniData.Specs.Extensions
         public void ShouldGetAnExpressionName()
         {
             Expression<Func<Model, int>> expression = model => model.Id;
-
+            
             expression.FieldName().Should().Be("Id");
         }
     }

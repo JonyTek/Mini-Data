@@ -8,11 +8,13 @@ using MiniData.Core.Helpers;
 using MiniData.Core.Model;
 using MiniData.Core.QueryBuilder;
 
-namespace MiniData.Specs.DataAccess
+namespace MiniData.Core.Specs.DataAccess
 {
-    public class CMS_Tree
+    public class Person
     {
-        public int NodeId { get; set; }
+        public int Id { get; set; }
+
+        public string Name { get; set; }
     }
 
 
@@ -31,13 +33,12 @@ namespace MiniData.Specs.DataAccess
         [TestMethod]
         public async Task ShouldGetData()
         {
-            var query = new Query<CMS_Tree>().Select("*").Where("NodeId", new Equals<int>(1));
+            var query = new Query<Person>().Select("*").Where("Id", new Equals<int>(1));
 
             var executor = new Executor();
             var nodes = await executor.ExecuteAndReturnAsync(query);
 
-            nodes.Count().Should().Be(1);
-            nodes.First().NodeId.Should().Be(1);
+            nodes.Count().Should().BeGreaterOrEqualTo(1);
         }
     }
 }

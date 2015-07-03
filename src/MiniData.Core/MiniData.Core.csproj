@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DataMap">
-      <HintPath>..\..\packages\DataMap.1.0.0\lib\net45\DataMap.dll</HintPath>
+      <HintPath>..\packages\DataMap.1.0.0\lib\net45\DataMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
     <Compile Include="DataAccess\Executor.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Helpers\ConnectionHelper.cs" />
     <Compile Include="Helpers\WhereValueFormatter.cs" />
     <Compile Include="Model\DbTable.cs" />

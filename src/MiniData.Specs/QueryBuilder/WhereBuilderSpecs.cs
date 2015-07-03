@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniData.Core.Model;
 using MiniData.Core.QueryBuilder;
 
-namespace MiniData.Specs.QueryBuilder
+namespace MiniData.Core.Specs.QueryBuilder
 {
     [TestClass]
     public class WhereBuilderSpecs

@@ -21,7 +21,7 @@ namespace MiniData.Core.QueryBuilder
 
 
             //INSERT LOGIC
-            .
+            
             _queryBuilder.Append(")");
         }
 

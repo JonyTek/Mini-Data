@@ -1,6 +1,6 @@
 ﻿using MiniData.Core.Model;
 
-namespace MiniData.Specs
+namespace MiniData.Core.Specs
 {
     public class Model : DbTable
     {

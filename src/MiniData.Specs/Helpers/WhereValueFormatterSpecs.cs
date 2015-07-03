@@ -3,7 +3,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniData.Core.Helpers;
 
-namespace MiniData.Specs.Helpers
+namespace MiniData.Core.Specs.Helpers
 {
     [TestClass]
     public class WhereValueFormatterSpecs

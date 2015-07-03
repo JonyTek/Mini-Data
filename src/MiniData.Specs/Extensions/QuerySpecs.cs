@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniData.Core.QueryBuilder;
 
-namespace MiniData.Specs.Extensions
+namespace MiniData.Core.Specs.Extensions
 {
     [TestClass]
     public class QuerySpecs
