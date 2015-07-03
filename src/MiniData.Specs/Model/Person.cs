@@ -1,7 +1,7 @@
 ﻿using MiniData.Core.Attributes;
 using MiniData.Core.Model;
 
-namespace MiniData.Core.Specs.Model
+namespace MiniData.Specs.Model
 {
     public class Person : IDbTable
     {
