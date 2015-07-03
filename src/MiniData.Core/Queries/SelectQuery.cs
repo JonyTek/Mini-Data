@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
+using MiniData.Core.DataAccess;
 using MiniData.Core.Model;
 using MiniData.Core.QueryBuilders;
 
 namespace MiniData.Core.Queries
 {
-    public class SelectQuery<T> : IQuery<T>
+    public class SelectQuery<T> : IQuery<T> where T : class, new()
     {
         private readonly StringBuilder _queryBuilder = new StringBuilder();
 
@@ -80,17 +84,32 @@ namespace MiniData.Core.Queries
             return this;
         }
 
+        public async Task<IEnumerable<T>> SelectAsync()
+        {
+            var executor = new Executor();
+
+            return await executor.ExecuteAndReturnAsync(this);
+        }
+
+        public async Task<T> SelectSingleAsync()
+        {
+            var result = await SelectAsync();
+
+            return result.FirstOrDefault();
+        }
+        
         public override string ToString()
         {
             var selectList = _selectBuilder.ToString();
 
-            if (string.IsNullOrEmpty(selectList)) return string.Empty;
+            var query = _queryBuilder.ToString();
 
-            _queryBuilder.Append(selectList).AppendFormat(" FROM [{0}]", typeof (T).Name);
-
-            var where = _whereBuilder.ToString();
-
-            if (!string.IsNullOrEmpty(where)) _queryBuilder.AppendFormat(" {0}", where);
+            if (!string.IsNullOrEmpty(query)) return query;
+         
+            _queryBuilder
+                .Append(selectList)
+                .AppendFormat(" FROM [{0}]", typeof (T).Name)
+                .AppendFormat(" {0}", _whereBuilder);
 
             return _queryBuilder.ToString();
         }

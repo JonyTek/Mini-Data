@@ -5,17 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MiniData.Core")]
+[assembly: AssemblyTitle("MiniData.Specs")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("MiniData.Core")]
+[assembly: AssemblyProduct("MiniData.Specs")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-[assembly: InternalsVisibleTo("MiniData.Core.Specs")]
-[assembly: InternalsVisibleTo("MiniData")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -23,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3fc50502-b7b7-4f2c-be23-b078d90a57f2")]
+[assembly: Guid("1c431162-a1cc-4fd6-b889-b42330cee255")]
 
 // Version information for an assembly consists of the following four values:
 //

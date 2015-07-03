@@ -11,7 +11,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldInsertIndividualColumnNames()
         {
-            var builder = new SelectBuilder<Model>();
+            var builder = new SelectBuilder<Model.Model>();
 
             builder.Select("Id Name");
 
@@ -23,7 +23,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldInsertIndividualColumnNames1()
         {
-            var builder = new SelectBuilder<Model>();
+            var builder = new SelectBuilder<Model.Model>();
 
             builder.Select("Id", "Name");
 
@@ -35,7 +35,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldSetMultipleSelectListThroughExpression()
         {
-            var builder = new SelectBuilder<Model>();
+            var builder = new SelectBuilder<Model.Model>();
 
             builder.Select(model => model.Id).Select(model => model.Name);
 
@@ -47,7 +47,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldReturnCorrectSelectList()
         {
-            var builder = new SelectBuilder<Model>();
+            var builder = new SelectBuilder<Model.Model>();
             builder
                 .Select(model => model.Id)
                 .Select(model => model.Name);
@@ -58,7 +58,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldReturnSelectAll()
         {
-            var builder = new SelectBuilder<Model>();
+            var builder = new SelectBuilder<Model.Model>();
 
             builder.ToString().Should().Contain("SELECT *");
         }
@@ -66,7 +66,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldReturnSelectAll1()
         {
-            var builder = new SelectBuilder<Model>().Select(model => model.All);
+            var builder = new SelectBuilder<Model.Model>().Select(model => model.All);
 
             builder.ToString().Should().Contain("SELECT *");
         }

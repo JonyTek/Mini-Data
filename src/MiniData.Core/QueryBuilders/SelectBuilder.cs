@@ -7,7 +7,7 @@ using MiniData.Core.Extensions;
 
 namespace MiniData.Core.QueryBuilders
 {
-    public class SelectBuilder<T>
+    internal class SelectBuilder<T>
     {
         internal HashSet<string> SelectColumns = new HashSet<string>();
 

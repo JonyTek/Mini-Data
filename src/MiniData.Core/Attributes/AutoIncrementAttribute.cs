@@ -3,7 +3,7 @@
 namespace MiniData.Core.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class PrimaryKeyAttribute : Attribute
+    public class AutoIncrementAttribute : Attribute
     {
     }
 }

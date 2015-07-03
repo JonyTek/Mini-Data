@@ -8,23 +8,23 @@ using MiniData.Core.Queries;
 
 namespace MiniData.Core.QueryBuilders
 {
-    public class WhereBuilder<T>
+    internal class WhereBuilder<T>
     {
         private readonly StringBuilder _whereBuilder = new StringBuilder();
 
-        public WhereBuilder<T> Where(string whereQuery)
+        internal WhereBuilder<T> Where(string whereQuery)
         {
             _whereBuilder.Append(whereQuery);
 
             return this;
         }
 
-        public WhereBuilder<T> Where<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
+        internal WhereBuilder<T> Where<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
             return Where(expression.FieldName(), where);
         }
 
-        public WhereBuilder<T> Where<TProperty>(string column, AbstractWhere<TProperty> where)
+        internal WhereBuilder<T> Where<TProperty>(string column, AbstractWhere<TProperty> where)
         {
             var type = "=";
             var isNullWhere = false;
@@ -70,22 +70,22 @@ namespace MiniData.Core.QueryBuilders
             return this;
         }
 
-        public WhereBuilder<T> AndWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
+        internal WhereBuilder<T> AndWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
             return AndWhere(expression.FieldName(), where);
         }
 
-        public WhereBuilder<T> AndWhere<TProperty>(string column, AbstractWhere<TProperty> where)
+        internal WhereBuilder<T> AndWhere<TProperty>(string column, AbstractWhere<TProperty> where)
         {
             return ConcatQueries(column, where, "AND");
         }
 
-        public WhereBuilder<T> OrWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
+        internal WhereBuilder<T> OrWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
             return OrWhere(expression.FieldName(), where);
         }
 
-        public WhereBuilder<T> OrWhere<TProperty>(string column, AbstractWhere<TProperty> where)
+        internal WhereBuilder<T> OrWhere<TProperty>(string column, AbstractWhere<TProperty> where)
         {
             return ConcatQueries(column, where, "OR");
         }

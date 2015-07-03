@@ -12,7 +12,7 @@ namespace MiniData.Core.Specs.Extensions
         [TestMethod]
         public void ShouldGetAnExpressionName()
         {
-            Expression<Func<Model, int>> expression = model => model.Id;
+            Expression<Func<Model.Model, int>> expression = model => model.Id;
             
             expression.FieldName().Should().Be("Id");
         }

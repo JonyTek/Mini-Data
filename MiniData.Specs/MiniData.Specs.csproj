@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{78D3F636-08C7-4ECE-AB1A-4B5D2EAF034B}</ProjectGuid>
+    <ProjectGuid>{47F6FF89-00CA-430F-BE4E-34ADEC87E586}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MiniData.Core.Specs</RootNamespace>
-    <AssemblyName>MiniData.Core.Specs</AssemblyName>
+    <RootNamespace>MiniData.Specs</RootNamespace>
+    <AssemblyName>MiniData.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -44,7 +44,6 @@
       <HintPath>..\packages\FluentAssertions.3.4.0\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -61,30 +60,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DataAccess\ExecutorSpecs.cs" />
-    <Compile Include="Extensions\ExpressionExtensionSpecs.cs" />
-    <Compile Include="Extensions\ObjectExtensionsSpecs.cs" />
-    <Compile Include="Model\AllTypes.cs" />
-    <Compile Include="Model\NoKey.cs" />
-    <Compile Include="Model\InvalidKey.cs" />
+    <Compile Include="DbConnectionSpecs.cs" />
     <Compile Include="Model\Person.cs" />
-    <Compile Include="Queries\SelectQuerySpecs.cs" />
-    <Compile Include="Helpers\WhereValueFormatterSpecs.cs" />
-    <Compile Include="Model\Model.cs" />
-    <Compile Include="QueryBuilder\CreateBuilderSpecs.cs" />
-    <Compile Include="QueryBuilder\SelectBuilderSpecs.cs" />
+    <Compile Include="Model\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryBuilder\WhereBuilderSpecs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MiniData\MiniData.csproj">
+      <Project>{7492858f-7903-41fa-b854-fabbfd47a3b3}</Project>
+      <Name>MiniData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\MiniData.Core\MiniData.Core.csproj">
+      <Project>{19EEAE26-A79F-4068-9D90-3DE4493448C9}</Project>
+      <Name>MiniData.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MiniData.Core\MiniData.Core.csproj">
-      <Project>{19eeae26-a79f-4068-9d90-3de4493448c9}</Project>
-      <Name>MiniData.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

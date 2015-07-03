@@ -31,13 +31,19 @@ namespace MiniData.Core.DataAccess
             return table.ToEnumerableOf<T>();
         }
 
-        internal async Task<int> ExecuteNonQueryAsync(string query)
+        internal async Task<int> ExecuteNonQueryAsync(IQuery query)
         {
             using (var connection = new SqlConnection(ConnectionHelper.ConnectionString))
             {
-                using (var cmd = new SqlCommand(query, connection))
+                using (var command = new SqlCommand(query.ToString(), connection))
                 {
-                    return await cmd.ExecuteNonQueryAsync();
+                    await command.Connection.OpenAsync();
+
+                    var result = await command.ExecuteNonQueryAsync();
+                    
+                    command.Connection.Close();
+
+                    return result;
                 }
             }
         }

@@ -7,17 +7,10 @@ using MiniData.Core.DataAccess;
 using MiniData.Core.Helpers;
 using MiniData.Core.Model;
 using MiniData.Core.Queries;
+using MiniData.Core.Specs.Model;
 
 namespace MiniData.Core.Specs.DataAccess
 {
-    public class Person
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-    }
-
-
     [TestClass]
     public class ExecutorSpecs
     {
@@ -33,7 +26,7 @@ namespace MiniData.Core.Specs.DataAccess
         [TestMethod]
         public async Task ShouldGetData()
         {
-            var query = new SelectQuery<Person>().Select("*").Where("Id", new Equals<int>(1));
+            var query = new SelectQuery<Person>().Select(p => p.Id).Where("Id", new Equals<int>(1));
 
             var executor = new Executor();
             var nodes = await executor.ExecuteAndReturnAsync(query);

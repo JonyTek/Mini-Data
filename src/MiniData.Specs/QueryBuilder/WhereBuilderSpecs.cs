@@ -12,7 +12,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateLikeWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where(model => model.Name, new Like<string>("%JONY"))
                     .ToString();
 
@@ -23,7 +23,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateEqualsWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new Equals<int>(1))
                     .ToString();
 
@@ -34,7 +34,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateNotEqualsWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new NotEquals<int>(1))
                     .ToString();
 
@@ -45,7 +45,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateGreaterThenWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new GreaterThen<int>(1))
                     .ToString();
 
@@ -56,7 +56,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateGreatenEqualThenWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new GreaterEqualThen<int>(1))
                     .ToString();
 
@@ -67,7 +67,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateLessThenWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new LessThen<int>(1))
                     .ToString();
 
@@ -78,7 +78,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateLessEqualThenWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new LessEqualThen<int>(1))
                     .ToString();
 
@@ -89,7 +89,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateIsNullWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new IsNull<int>())
                     .ToString();
 
@@ -100,7 +100,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateIsNotNullWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new IsNotNull<int>())
                     .ToString();
 
@@ -111,7 +111,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateAndWhereQuery()
         {
             var builder =
-                new WhereBuilder<Model>()
+                new WhereBuilder<Model.Model>()
                     .Where("Id", new IsNotNull<int>())
                     .AndWhere("Id", new IsNull<int>())
                     .ToString();
@@ -122,7 +122,7 @@ namespace MiniData.Core.Specs.QueryBuilder
         [TestMethod]
         public void ShouldCreateOrWhereQuery()
         {
-            var builder = new WhereBuilder<Model>()
+            var builder = new WhereBuilder<Model.Model>()
                 .Where("Id", new IsNotNull<int>())
                 .OrWhere("Id", new IsNull<int>())
                 .ToString();

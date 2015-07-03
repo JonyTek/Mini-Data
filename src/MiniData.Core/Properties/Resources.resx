@@ -118,17 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateTableEnd" xml:space="preserve">
-    <value>SET ANSI_PADDING OFF
+    <value>GO
+
+SET ANSI_PADDING OFF
 GO</value>
   </data>
   <data name="CreateTableStart" xml:space="preserve">
-    <value>SET ANSI_NULLS ON
+    <value> SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
 SET ANSI_PADDING ON
-GO</value>
+GO </value>
+  </data>
+  <data name="PrimaryKeyTemplate" xml:space="preserve">
+    <value>CONSTRAINT [PK_{0}] PRIMARY KEY CLUSTERED ([{1}] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]</value>
   </data>
 </root>
