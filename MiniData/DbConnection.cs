@@ -10,7 +10,12 @@ namespace MiniData
 {
     public class DbConnection : IDisposable, IDbConnection
     {
-        public static string ConnectionString
+        public static void Init(string name)
+        {
+            ConnectionString = name;
+        }
+
+        internal static string ConnectionString
         {
             set { ConnectionHelper.ConnectionString = ConfigurationManager.ConnectionStrings[value].ConnectionString; }
         }
@@ -37,7 +42,18 @@ namespace MiniData
         {
             await new CreateQuery().CreateTableAsync<TTable>();
         }
+        public async Task DropCreateTableAsync<TTable>() where TTable : class, IDbTable, new()
+        {
+            await DropTableAsync<TTable>();
+            
+            await CreateTableAsync<TTable>();
+        }
 
-        public void Dispose(){ }
+        public async Task DropTableAsync<TTable>() where TTable : class, IDbTable, new()
+        {
+            await new DropQuery().DropAsync<TTable>();
+        }
+
+        public void Dispose() { }
     }
 }

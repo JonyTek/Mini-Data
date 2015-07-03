@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MiniData.Core.Helpers
+namespace MiniData.Core.Util
 {
     internal static class WhereValueFormatter
     {
@@ -10,9 +10,7 @@ namespace MiniData.Core.Helpers
             {
                 case "System.String":
                 case "System.Guid":
-                {
                     return string.Format("'{0}'", value);
-                }
                 case "System.DateTime":
                 {
                     var date = DateTime.Parse(value.ToString());

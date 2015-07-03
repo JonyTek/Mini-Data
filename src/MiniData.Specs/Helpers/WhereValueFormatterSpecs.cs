@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniData.Core.Helpers;
+using MiniData.Core.Util;
 
 namespace MiniData.Core.Specs.Helpers
 {

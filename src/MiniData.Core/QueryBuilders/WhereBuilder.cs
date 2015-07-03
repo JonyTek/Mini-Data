@@ -5,6 +5,7 @@ using MiniData.Core.Extensions;
 using MiniData.Core.Helpers;
 using MiniData.Core.Model;
 using MiniData.Core.Queries;
+using MiniData.Core.Util;
 
 namespace MiniData.Core.QueryBuilders
 {

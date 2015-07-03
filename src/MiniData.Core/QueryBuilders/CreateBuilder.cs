@@ -19,7 +19,7 @@ namespace MiniData.Core.QueryBuilders
 
         internal CreateBuilder()
         {
-            _queryBuilder = new StringBuilder(Resources.CreateTableStart);
+            _queryBuilder = new StringBuilder();
         }
 
         internal void CreateTable<T>()
@@ -45,16 +45,20 @@ namespace MiniData.Core.QueryBuilders
 
             if (_primaryKey != null)
             {
-                _queryBuilder.Append("ON [PRIMARY]");
+                _queryBuilder.AppendFormat("{0}ON [PRIMARY]{0}", Environment.NewLine);
             }
         }
 
         internal string GetColumnDetails(PropertyInfo property)
         {
-            var nullable = property.IsNullableType() ? "" : "NOT ";
+            var nullable = property.IsNullableType() ? "NULL" : "NOT NULL";
             var increment = property.IsAutoIncrement() ? "IDENTITY(1,1)" : "";
 
-            return string.Format("[{0}] {1} {2} {3}NULL,", property.Name, property.ToSqlType(), increment, nullable);
+            return string.Format("[{0}] {1} {2} {3},",
+                property.Name,
+                property.ToSqlType(),
+                increment,
+                nullable);
         }
 
         internal void CheckPrimaryKey(PropertyInfo property)
@@ -70,9 +74,9 @@ namespace MiniData.Core.QueryBuilders
             _primaryKey = property;
         }
 
-        public string Query()
+        public override string ToString()
         {
-            return _queryBuilder.Append(Resources.CreateTableEnd).ToString();
+            return _queryBuilder.ToString();
         }
     }
 }

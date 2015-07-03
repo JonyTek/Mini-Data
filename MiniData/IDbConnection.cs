@@ -15,5 +15,9 @@ namespace MiniData
         SelectQuery<T> Select<T, TProperty>(Expression<Func<T, TProperty>> expression) where T : class, new();
 
         Task CreateTableAsync<TTable>() where TTable : class, IDbTable, new();
+
+        Task DropCreateTableAsync<TTable>() where TTable : class, IDbTable, new();
+
+        Task DropTableAsync<TTable>() where TTable : class, IDbTable, new();
     }
 }

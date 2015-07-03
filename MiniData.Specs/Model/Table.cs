@@ -8,7 +8,7 @@ namespace MiniData.Specs.Model
         [PrimaryKey]
         public int Id { get; set; }
 
-        [Null]
+        [Nullable]
         public string Name { get; set; }
     }
 }

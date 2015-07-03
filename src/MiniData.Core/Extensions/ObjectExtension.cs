@@ -9,10 +9,5 @@ namespace MiniData.Core.Extensions
         {
             return obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
         }
-
-        internal static string GetFullName(this object obj)
-        {
-            return obj.GetType().FullName;
-        }
     }
 }

@@ -61,35 +61,10 @@ namespace MiniData.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GO
-        ///
-        ///SET ANSI_PADDING OFF
-        ///GO.
-        /// </summary>
-        internal static string CreateTableEnd {
-            get {
-                return ResourceManager.GetString("CreateTableEnd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  SET ANSI_NULLS ON
-        ///GO
-        ///
-        ///SET QUOTED_IDENTIFIER ON
-        ///GO
-        ///
-        ///SET ANSI_PADDING ON
-        ///GO .
-        /// </summary>
-        internal static string CreateTableStart {
-            get {
-                return ResourceManager.GetString("CreateTableStart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CONSTRAINT [PK_{0}] PRIMARY KEY CLUSTERED ([{1}] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY].
+        ///   Looks up a localized string similar to CONSTRAINT [PK_{0}] PRIMARY KEY CLUSTERED 
+        ///(
+        ///	[{1}] ASC
+        ///)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY].
         /// </summary>
         internal static string PrimaryKeyTemplate {
             get {

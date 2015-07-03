@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniData.Core", "src\MiniData.Core\MiniData.Core.csproj", "{19EEAE26-A79F-4068-9D90-3DE4493448C9}"
 EndProject
@@ -17,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniData", "MiniData\MiniData.csproj", "{7492858F-7903-41FA-B854-FABBFD47A3B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniData.Specs", "MiniData.Specs\MiniData.Specs.csproj", "{47F6FF89-00CA-430F-BE4E-34ADEC87E586}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{56EE59F3-16B8-44B7-BF3B-59FCCF50D35E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,5 +45,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78D3F636-08C7-4ECE-AB1A-4B5D2EAF034B} = {56EE59F3-16B8-44B7-BF3B-59FCCF50D35E}
+		{47F6FF89-00CA-430F-BE4E-34ADEC87E586} = {56EE59F3-16B8-44B7-BF3B-59FCCF50D35E}
 	EndGlobalSection
 EndGlobal

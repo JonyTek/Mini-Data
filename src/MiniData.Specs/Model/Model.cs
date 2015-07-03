@@ -9,7 +9,7 @@ namespace MiniData.Core.Specs.Model
 
         public string Name { get; set; }
 
-        [Null]
+        [Nullable]
         public int? Nullable { get; set; }
     }
 }

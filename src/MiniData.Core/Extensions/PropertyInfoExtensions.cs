@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using MiniData.Core.Attributes;
 using MiniData.Core.Helpers;
+using MiniData.Core.Util;
 
 namespace MiniData.Core.Extensions
 {
@@ -8,7 +9,7 @@ namespace MiniData.Core.Extensions
     {
         internal static bool IsNullableType(this PropertyInfo property)
         {
-            return property.GetCustomAttribute<NullAttribute>() != null;
+            return property.GetCustomAttribute<NullableAttribute>() != null;
         }
 
         internal static bool IsAutoIncrement(this PropertyInfo property)
@@ -19,7 +20,9 @@ namespace MiniData.Core.Extensions
 
         internal static string ToSqlType(this PropertyInfo property)
         {
-            return SqlTypeMap.GetType(property.PropertyType);
+            var prop = property.GetCustomAttribute<DataTypeAttribute>();
+
+            return prop != null ? string.Format("[{0}]", prop.Type) : SqlTypeMap.GetType(property.PropertyType);
         }
     }
 }

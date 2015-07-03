@@ -13,7 +13,7 @@ namespace MiniData.Specs
         [TestInitialize]
         public void OnBeforeEachTest()
         {
-            DbConnection.ConnectionString = "ConnectionString";
+            DbConnection.Init("ConnectionString");
         }
 
         [TestMethod]
@@ -32,11 +32,13 @@ namespace MiniData.Specs
         }
 
         [TestMethod]
-        public async Task ShouldCreateATable()
+        public async Task ShouldDropCreateATable()
         {
             using (var db = new DbConnection())
             {
+                await db.DropTableAsync<Table>();
                 await db.CreateTableAsync<Table>();
+                await db.DropCreateTableAsync<Table>();
             }
         }
     }
