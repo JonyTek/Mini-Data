@@ -17,8 +17,8 @@ namespace MiniData.Core.Specs.QueryBuilder
         {
             var builder = new CreateBuilder();
             builder.CreateTable<Person>();
-
-            builder.ToString().Should().Contain("CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED ");
+         
+            builder.Query().Should().Contain("CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED ");
         }
 
         [TestMethod]

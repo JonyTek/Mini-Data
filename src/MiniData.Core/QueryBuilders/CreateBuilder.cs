@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Reflection;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using MiniData.Core.Attributes;
-using MiniData.Core.DataAccess;
 using MiniData.Core.Exceptions;
 using MiniData.Core.Extensions;
-using MiniData.Core.Helpers;
 using MiniData.Core.Model;
 using MiniData.Core.Properties;
 
@@ -14,10 +11,11 @@ namespace MiniData.Core.QueryBuilders
 {
     public class CreateBuilder
     {
-        private readonly StringBuilder _queryBuilder;
-
         private string _tableName;
+        
         private PropertyInfo _primaryKey;
+
+        private readonly StringBuilder _queryBuilder;
 
         internal CreateBuilder()
         {

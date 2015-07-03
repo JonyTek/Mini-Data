@@ -35,16 +35,17 @@ namespace MiniData.Core.DataAccess
         {
             using (var connection = new SqlConnection(ConnectionHelper.ConnectionString))
             {
+                int result;
                 using (var command = new SqlCommand(query.ToString(), connection))
                 {
                     await command.Connection.OpenAsync();
 
-                    var result = await command.ExecuteNonQueryAsync();
+                    result = await command.ExecuteNonQueryAsync();
                     
                     command.Connection.Close();
-
-                    return result;
                 }
+
+                return result;
             }
         }
     }
