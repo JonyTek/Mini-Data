@@ -1,9 +1,8 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using MiniData.Core.Model;
 using MiniData.Core.Properties;
 
-namespace MiniData.Core.QueryBuilder
+namespace MiniData.Core.QueryBuilders
 {
     public class CreateBuilder
     {

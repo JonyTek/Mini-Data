@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\ExecutorSpecs.cs" />
     <Compile Include="Extensions\ExpressionExtensionSpecs.cs" />
-    <Compile Include="Extensions\QuerySpecs.cs" />
+    <Compile Include="QueryBuilder\SelectQuerySpecs.cs" />
     <Compile Include="Helpers\WhereValueFormatterSpecs.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="QueryBuilder\SelectBuilderSpecs.cs" />

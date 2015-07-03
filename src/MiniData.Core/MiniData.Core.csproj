@@ -55,6 +55,7 @@
     <Compile Include="Model\GreaterEqualThen.cs" />
     <Compile Include="Model\GreaterThen.cs" />
     <Compile Include="Model\IDbTable.cs" />
+    <Compile Include="Model\IQuery.cs" />
     <Compile Include="Model\IsNotNull.cs" />
     <Compile Include="Model\IsNull.cs" />
     <Compile Include="Model\LessEqualThen.cs" />
@@ -68,10 +69,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QueryBuilder\CreateBuilder.cs" />
-    <Compile Include="QueryBuilder\WhereBuilder.cs" />
-    <Compile Include="QueryBuilder\SelectBuilder.cs" />
-    <Compile Include="QueryBuilder\Query.cs" />
+    <Compile Include="QueryBuilders\CreateBuilder.cs" />
+    <Compile Include="QueryBuilders\WhereBuilder.cs" />
+    <Compile Include="QueryBuilders\SelectBuilder.cs" />
+    <Compile Include="Queries\SelectQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

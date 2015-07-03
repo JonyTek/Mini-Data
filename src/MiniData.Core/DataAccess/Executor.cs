@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using DataMap.Extensions;
 using MiniData.Core.Helpers;
-using MiniData.Core.QueryBuilder;
+using MiniData.Core.Model;
 
 //http://www.codeproject.com/Articles/837599/Using-Csharp-to-connect-to-and-query-from-a-SQL-da
 
@@ -12,7 +12,7 @@ namespace MiniData.Core.DataAccess
 {
     public class Executor
     {
-        internal async Task<IEnumerable<T>> ExecuteAndReturnAsync<T>(Query<T> query)
+        internal async Task<IEnumerable<T>> ExecuteAndReturnAsync<T>(IQuery<T> query)
             where T : class, new()
         {
             var table = new DataTable();
@@ -21,7 +21,7 @@ namespace MiniData.Core.DataAccess
                 using (var command = new SqlCommand(query.ToString(), connection))
                 {
                     await command.Connection.OpenAsync();
-                    
+
                     table.Load(await command.ExecuteReaderAsync());
 
                     command.Connection.Close();

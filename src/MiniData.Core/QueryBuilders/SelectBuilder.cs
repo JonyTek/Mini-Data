@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using MiniData.Core.Extensions;
 
-namespace MiniData.Core.QueryBuilder
+namespace MiniData.Core.QueryBuilders
 {
-    public partial class Query<T>
+    public class SelectBuilder<T>
     {
-        public Query<T> Select(params string[] columns)
+        internal HashSet<string> SelectColumns = new HashSet<string>();
+
+        internal SelectBuilder<T> Select(params string[] columns)
         {
             foreach (var column in columns.Where(column => !SelectColumns.Contains(column)))
             {
@@ -18,14 +21,14 @@ namespace MiniData.Core.QueryBuilder
             return this;
         }
 
-        public Query<T> Select(string columns)
+        internal SelectBuilder<T> Select(string columns)
         {
             Select(columns.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
 
             return this;
         }
 
-        public Query<T> Select<TProperty>(Expression<Func<T, TProperty>> expression)
+        internal SelectBuilder<T> Select<TProperty>(Expression<Func<T, TProperty>> expression)
         {
             var column = expression.FieldName();
 
@@ -37,9 +40,9 @@ namespace MiniData.Core.QueryBuilder
             return this;
         }
 
-        private string CompileSelectList()
+        public override string ToString()
         {
-            var columns = new StringBuilder();
+            var columns = new StringBuilder("SELECT ");
 
             if (SelectColumns.Contains("All") || SelectColumns.Contains("*") || !SelectColumns.Any())
             {

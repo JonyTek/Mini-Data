@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniData.Core.DataAccess;
 using MiniData.Core.Helpers;
 using MiniData.Core.Model;
-using MiniData.Core.QueryBuilder;
+using MiniData.Core.Queries;
 
 namespace MiniData.Core.Specs.DataAccess
 {
@@ -33,7 +33,7 @@ namespace MiniData.Core.Specs.DataAccess
         [TestMethod]
         public async Task ShouldGetData()
         {
-            var query = new Query<Person>().Select("*").Where("Id", new Equals<int>(1));
+            var query = new SelectQuery<Person>().Select("*").Where("Id", new Equals<int>(1));
 
             var executor = new Executor();
             var nodes = await executor.ExecuteAndReturnAsync(query);

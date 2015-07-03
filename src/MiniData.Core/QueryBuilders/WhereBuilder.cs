@@ -4,26 +4,27 @@ using System.Text;
 using MiniData.Core.Extensions;
 using MiniData.Core.Helpers;
 using MiniData.Core.Model;
+using MiniData.Core.Queries;
 
-namespace MiniData.Core.QueryBuilder
+namespace MiniData.Core.QueryBuilders
 {
-    public partial class Query<T>
+    public class WhereBuilder<T>
     {
         private readonly StringBuilder _whereBuilder = new StringBuilder();
 
-        public Query<T> Where(string whereQuery)
+        public WhereBuilder<T> Where(string whereQuery)
         {
             _whereBuilder.Append(whereQuery);
 
             return this;
         }
 
-        public Query<T> Where<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
+        public WhereBuilder<T> Where<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
             return Where(expression.FieldName(), where);
         }
 
-        public Query<T> Where<TProperty>(string column, AbstractWhere<TProperty> where)
+        public WhereBuilder<T> Where<TProperty>(string column, AbstractWhere<TProperty> where)
         {
             var type = "=";
             var isNullWhere = false;
@@ -69,35 +70,35 @@ namespace MiniData.Core.QueryBuilder
             return this;
         }
 
-        public Query<T> AndWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
+        public WhereBuilder<T> AndWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
             return AndWhere(expression.FieldName(), where);
         }
 
-        public Query<T> AndWhere<TProperty>(string column, AbstractWhere<TProperty> where)
+        public WhereBuilder<T> AndWhere<TProperty>(string column, AbstractWhere<TProperty> where)
         {
             return ConcatQueries(column, where, "AND");
         }
 
-        public Query<T> OrWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
+        public WhereBuilder<T> OrWhere<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
             return OrWhere(expression.FieldName(), where);
         }
 
-        public Query<T> OrWhere<TProperty>(string column, AbstractWhere<TProperty> where)
+        public WhereBuilder<T> OrWhere<TProperty>(string column, AbstractWhere<TProperty> where)
         {
             return ConcatQueries(column, where, "OR");
         }
 
-        private Query<T> ConcatQueries<TProperty>(string column, AbstractWhere<TProperty> where, string andOrWhere)
+        private WhereBuilder<T> ConcatQueries<TProperty>(string column, AbstractWhere<TProperty> where, string andOrWhere)
         {
-            var currentWhere = CompileWhere();
+            var currentWhere = GetToString();
 
             ClearWhereBuilder();
 
             Where(column, where);
 
-            var newWhere = CompileWhere();
+            var newWhere = GetToString();
 
             ClearWhereBuilder();
 
@@ -111,8 +112,15 @@ namespace MiniData.Core.QueryBuilder
             _whereBuilder.Clear();
         }
 
-        private string CompileWhere()
+        private string GetToString()
         {
+            return _whereBuilder.ToString().Trim();
+        }
+
+        public override string ToString()
+        {
+            _whereBuilder.Insert(0, "WHERE ");
+
             return _whereBuilder.ToString().Trim();
         }
     }
