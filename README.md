@@ -9,7 +9,7 @@ My contact is jonathontek@gmail.com
 
 I'd love to hear what you think.
 
-Planned short term feature:
+Planned short term features:
 * Updates
 * Deletes
 * Top N
