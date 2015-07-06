@@ -9,6 +9,13 @@ My contact is jonathontek@gmail.com
 
 I'd love to hear what you think.
 
+Planned short term feature:
+* Updates
+* Deletes
+* Top N
+* Count
+* Joins and foreign key constraints
+
 ```csharp
 //Define a model class 
 //implementing IDbTable marker interface
@@ -57,6 +64,7 @@ using (var db = new DbConnection())
 	var query = db.Select<Person>().Where(p => p.Id, Sql.Equals(1));
 
 	var people = await query.SelectAsync();	
+	var person = await query.SelectSingleAsync();	
 }
 
 //Need to use the generic DbConnection with expressions
@@ -65,10 +73,10 @@ using (var db = new DbConnection<Person>())
 	//Select accepts strings or expressions to limit columns
 	var query = db.Select(p => p.Name).Where(p => p.Name, Sql.Like("Rick%"));
 	
-	//Same async
+	//Same as
 	//var query = db.Select("Name").Where(p => p.Name, Sql.Like("Rick%"));
 	
-	//Or select multiple columns//
+	//Or select multiple columns
 	//var query = db.Select("Name Id").Where(p => p.Name, Sql.Like("Rick%"));
 
 	var people = await query.SelectAsync();
