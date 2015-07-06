@@ -5,14 +5,14 @@ using MiniData.Core.QueryBuilders;
 
 namespace MiniData.Core.Queries
 {
-    public class DropQuery : IQuery
+    internal class DropQuery : IQuery
     {
         private readonly DropBuilder _dropBuilder = new DropBuilder();
 
         internal async Task DropAsync<T>()
             where T : class, IDbTable, new()
         {
-            _dropBuilder.Drop<T>();
+            _dropBuilder.DropTable<T>();
 
             var executor = new Executor();
 

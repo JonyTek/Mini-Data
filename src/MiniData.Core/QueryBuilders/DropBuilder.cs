@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using MiniData.Core.Model;
 
 namespace MiniData.Core.QueryBuilders
@@ -7,10 +8,10 @@ namespace MiniData.Core.QueryBuilders
     {
         private readonly StringBuilder _dropBuilder = new StringBuilder();
 
-        public void Drop<T>()
+        public void DropTable<T>()
             where T : class, IDbTable, new()
         {
-            _dropBuilder.AppendFormat("IF OBJECT_ID('dbo.{0}', 'U') IS NOT NULL  DROP TABLE [dbo].[{0}]", typeof(T).Name);
+            _dropBuilder.AppendFormat("IF OBJECT_ID('dbo.{0}', 'U') IS NOT NULL DROP TABLE [dbo].[{0}]", typeof(T).Name);
         }
 
         public override string ToString()

@@ -18,29 +18,28 @@ namespace MiniData.Core.Queries
 
         private readonly WhereBuilder<T> _whereBuilder = new WhereBuilder<T>();
 
-        internal SelectQuery<T> Select(params string[] columns)
+        public SelectQuery<T> Select(params string[] columns)
         {
             _selectBuilder.Select(columns);
 
             return this;
         }
 
-        internal SelectQuery<T> Select(string columns)
+        public SelectQuery<T> Select(string columns)
         {
             _selectBuilder.Select(columns);
 
             return this;
         }
 
-        internal SelectQuery<T> Select<TProperty>(Expression<Func<T, TProperty>> expression)
+        public SelectQuery<T> Select<TProperty>(Expression<Func<T, TProperty>> expression)
         {
             _selectBuilder.Select(expression);
 
             return this;
         }
 
-        public SelectQuery<T> Where<TProperty>(Expression<Func<T, TProperty>> expression,
-            AbstractWhere<TProperty> where)
+        public SelectQuery<T> Where<TProperty>(Expression<Func<T, TProperty>> expression, AbstractWhere<TProperty> where)
         {
              _whereBuilder.Where(expression, where);
 

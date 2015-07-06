@@ -5,14 +5,15 @@ using MiniData.Core.QueryBuilders;
 
 namespace MiniData.Core.Queries
 {
-    internal class CreateQuery : IQuery
+    internal class InsertQuery<T> : IQuery<T>
     {
-        private readonly CreateBuilder _createBuilder = new CreateBuilder(); 
+        private readonly InsertBuilder _insertBuilder = new InsertBuilder();
 
-        internal async Task CreateTableAsync<T>()
+        internal async Task InsertAsync<T>(T toInsert)
             where T : class, IDbTable, new()
+
         {
-            _createBuilder.CreateTable<T>();
+            _insertBuilder.Insert(toInsert);
 
             var executor = new Executor();
 
@@ -21,7 +22,7 @@ namespace MiniData.Core.Queries
 
         public override string ToString()
         {
-            return _createBuilder.ToString();
+            return _insertBuilder.ToString();
         }
     }
 }

@@ -2,9 +2,7 @@
 using System.Linq.Expressions;
 using System.Text;
 using MiniData.Core.Extensions;
-using MiniData.Core.Helpers;
 using MiniData.Core.Model;
-using MiniData.Core.Queries;
 using MiniData.Core.Util;
 
 namespace MiniData.Core.QueryBuilders
@@ -66,7 +64,7 @@ namespace MiniData.Core.QueryBuilders
             _whereBuilder.AppendFormat("[{0}] {1} {2}", column, type,
                 isNullWhere
                     ? string.Empty
-                    : WhereValueFormatter.Format(where.Value));
+                    : SqlTypeFormatter.Format(where.Value));
 
             return this;
         }
@@ -120,6 +118,8 @@ namespace MiniData.Core.QueryBuilders
 
         public override string ToString()
         {
+            if (_whereBuilder.Length == 0) return string.Empty;
+
             _whereBuilder.Insert(0, "WHERE ");
 
             return _whereBuilder.ToString().Trim();

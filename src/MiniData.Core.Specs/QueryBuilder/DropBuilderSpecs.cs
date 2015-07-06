@@ -12,9 +12,10 @@ namespace MiniData.Core.Specs.QueryBuilder
         public void ShouldCreateDropQuery()
         {
             var query = new DropBuilder();
-            query.Drop<Person>();
+           
+            query.DropTable<Person>();
 
-            query.ToString().Should().Be("IF OBJECT_ID('dbo.Person', 'U') IS NOT NULL  DROP TABLE [dbo].[Person]");
+            query.ToString().Should().Be("IF OBJECT_ID('dbo.Person', 'U') IS NOT NULL DROP TABLE [dbo].[Person]");
         }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Model\Model.cs" />
     <Compile Include="QueryBuilder\CreateBuilderSpecs.cs" />
     <Compile Include="QueryBuilder\DropBuilderSpecs.cs" />
+    <Compile Include="QueryBuilder\InsertBuilderSpecs.cs" />
     <Compile Include="QueryBuilder\SelectBuilderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBuilder\WhereBuilderSpecs.cs" />

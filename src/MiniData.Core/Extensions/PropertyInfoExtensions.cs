@@ -18,6 +18,11 @@ namespace MiniData.Core.Extensions
                    property.GetCustomAttribute<PrimaryKeyAttribute>() != null;
         }
 
+        internal static bool IsPrimarykey(this PropertyInfo property)
+        {
+            return property.GetCustomAttribute<PrimaryKeyAttribute>() != null;
+        }
+
         internal static string ToSqlType(this PropertyInfo property)
         {
             var prop = property.GetCustomAttribute<DataTypeAttribute>();

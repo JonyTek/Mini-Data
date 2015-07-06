@@ -26,12 +26,9 @@ namespace MiniData.Core.Specs.DataAccess
         [TestMethod]
         public async Task ShouldGetData()
         {
-            var query = new SelectQuery<Person>().Select(p => p.Id).Where("Id", new Equals<int>(1));
+            var people = await new SelectQuery<Person>().Select(p => p.Id).Where("Id", new Equals<int>(1)).SelectAsync();
 
-            var executor = new Executor();
-            var nodes = await executor.ExecuteAndReturnAsync(query);
-
-            nodes.Count().Should().BeGreaterOrEqualTo(1);
+            people.Count().Should().BeGreaterOrEqualTo(1);
         }
     }
 }

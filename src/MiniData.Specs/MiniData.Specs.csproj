@@ -70,7 +70,7 @@
       <Project>{7492858f-7903-41fa-b854-fabbfd47a3b3}</Project>
       <Name>MiniData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\MiniData.Core\MiniData.Core.csproj">
+    <ProjectReference Include="..\MiniData.Core\MiniData.Core.csproj">
       <Project>{19EEAE26-A79F-4068-9D90-3DE4493448C9}</Project>
       <Name>MiniData.Core</Name>
     </ProjectReference>
